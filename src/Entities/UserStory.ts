@@ -1,0 +1,2 @@
+class UserStory extends WorkItem {
+}
