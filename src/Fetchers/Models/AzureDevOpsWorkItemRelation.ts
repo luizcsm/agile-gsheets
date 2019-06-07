@@ -1,0 +1,3 @@
+class AzureDevOpsWorkItemRelation {
+    target : AzureDevOpsWorkItemRelationTarget;
+}

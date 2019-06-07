@@ -1,0 +1,3 @@
+class AzureDevOpsWorkItemRelationTarget {
+    id: number;
+}

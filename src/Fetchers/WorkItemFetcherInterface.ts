@@ -1,3 +1,4 @@
 interface WorkItemFetcherInterface {
-    fetchFromService() : Array<WorkItem>;
+    listIterationWorkItems(iteration: string) : Array<WorkItem>;
+    getWorkItemById(id: number) : WorkItem;
 }
