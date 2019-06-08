@@ -9,7 +9,7 @@ class AzureDevOpsWorkItemFetcher extends BaseWorkItemItemFetcher {
         return workItemIds.map((id) => this.getWorkItemById(id));
     }
 
-    private listWorkItemIds(iterationId: string) : Array<number> {
+    public listWorkItemIds(iterationId: string) : Array<number> {
         const requestPath: string = this.config.organization + '/' + this.config.project + '/' + this.config.team +
             '/_apis/work/teamsettings/iterations/'+ iterationId + '/workitems?api-version=' + this.API_VERSION;
         return this.doGetRequest<AzureDevOpsIterationWorkItems>(requestPath).workItemRelations.map((relation => relation.target.id));

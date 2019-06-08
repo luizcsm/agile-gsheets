@@ -2,3 +2,7 @@
 *.js
 node_modules/
 src/.clasp.json
+src/creds.json
+src/.clasprc.json
+.vscode/
+src/test.ts
