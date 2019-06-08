@@ -1,0 +1,3 @@
+class AzureDevOpsWorkItemLink {
+    target : AzureDevOpsWorkItemReference;
+}

@@ -1,0 +1,3 @@
+class AzureDevOpsWorkItemReference {
+    id: number;
+}
