@@ -1,3 +1,4 @@
 *.gs
 *.js
 node_modules/
+src/.clasp.json
