@@ -1,4 +1,4 @@
-abstract class BaseWorkItemItemFetcher implements WorkItemFetcherInterface {
+abstract class BaseWorkItemFetcher implements WorkItemFetcherInterface {
 
     constructor(protected readonly endpoint: string) { }
 
@@ -11,6 +11,11 @@ abstract class BaseWorkItemItemFetcher implements WorkItemFetcherInterface {
             headers: this.getRequestHeaders()
         }
         let response: GoogleAppsScript.URL_Fetch.HTTPResponse = UrlFetchApp.fetch(this.endpoint + path, params);
+        
+        if (response.getResponseCode() != 200) {
+            console.log('Error performing get request. Response code: %d', response.getResponseCode());
+        }
+
         return JSON.parse(response.getContentText()) as T;
     }
 
