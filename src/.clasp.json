@@ -1,0 +1,10 @@
+{
+    "scriptId":"x",
+    "projectId":"agile-sheets",
+    "filePushOrder": [
+        "models/workItems/WorkItem.ts",
+        "fetchers/WorkItemFetcherInterface.ts",
+        "fetchers/BaseWorkItemFetcher.ts"
+    ],
+    "rootDir" : "./"
+}
