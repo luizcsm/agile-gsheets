@@ -1,5 +1,5 @@
 abstract class WorkItem {
-    id: number;
+    id: string;
     workItemType: WorkItemType;
     parentWorkItem: number;
     title: string;

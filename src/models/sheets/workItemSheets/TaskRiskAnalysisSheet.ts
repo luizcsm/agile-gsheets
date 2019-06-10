@@ -8,7 +8,11 @@ class TaskRiskAnalysisSheet extends WorkItemSheet {
         return workItem && workItem.workItemType == WorkItemType.Task;
     }
 
-    update(): void {
+    protected getDataRangeList(): GoogleAppsScript.Spreadsheet.RangeList {
+        throw new Error("Method not implemented.");
+    }
+
+    protected updateDataRangesLine(rangeList: RangeAndDataPair[], lineIndex: number, workItem: WorkItem): void {
         throw new Error("Method not implemented.");
     }
 }

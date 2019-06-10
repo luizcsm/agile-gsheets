@@ -79,7 +79,7 @@ class AzureDevOpsWorkItemFetcher extends BaseWorkItemFetcher {
     }
 
     private fillCommonFields_(workItem: WorkItem, model: AzureDevOpsWorkItem) : void {
-        workItem.id = model.id;
+        workItem.id = model.id.toString();
         workItem.version = model.rev;
         workItem.assignedTo = model.fields["System.AssignedTo"] ? (model.fields["System.AssignedTo"]["displayName"] as string) : null;
         workItem.state = this.convertWorkItemState_(model.fields["System.State"] as string);

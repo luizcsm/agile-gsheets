@@ -13,7 +13,7 @@ abstract class BaseWorkItemFetcher implements WorkItemFetcherInterface {
         let response: GoogleAppsScript.URL_Fetch.HTTPResponse = UrlFetchApp.fetch(this.endpoint + path, params);
         
         if (response.getResponseCode() != 200) {
-            console.log('Error performing get request. Response code: %d', response.getResponseCode());
+            Logger.log('Error performing get request. Response code: %d', response.getResponseCode());
         }
 
         return JSON.parse(response.getContentText()) as T;
