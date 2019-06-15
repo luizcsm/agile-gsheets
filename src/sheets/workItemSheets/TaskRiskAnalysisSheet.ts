@@ -1,7 +1,7 @@
 class TaskRiskAnalysisSheet extends WorkItemSheet {
 
-    constructor(workItems: WorkItem[]) {
-        super(TASK_RISK_ANALYSIS_SHEET, workItems);
+    constructor() {
+        super(TASK_RISK_ANALYSIS_SHEET);
     }
 
     workItemFilter(workItem: WorkItem): boolean {

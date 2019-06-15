@@ -1,4 +1,4 @@
-class SightManagementBurndownSheet extends BaseSheet {
+class SightManagementBurndownSheet extends Sheet {
 
     constructor() {
         super(SIGHT_MANAGEMENT_BURNDOWN_SHEET);

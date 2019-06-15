@@ -1,4 +1,4 @@
-abstract class BaseSheet {
+abstract class Sheet implements ISheet {
 
     protected readonly sheet: GoogleAppsScript.Spreadsheet.Sheet;
 

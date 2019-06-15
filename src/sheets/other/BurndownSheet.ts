@@ -1,7 +1,7 @@
-class ConfigSheet extends BaseSheet {
+class BurndownSheet extends Sheet {
 
     constructor() {
-        super(CONFIG_SHEET);        
+        super(BURNDOWN_SHEET)
     }
 
     update(): void {

@@ -1,0 +1,3 @@
+interface ISheetProvider {
+    getSheets(): ISheet[];
+}

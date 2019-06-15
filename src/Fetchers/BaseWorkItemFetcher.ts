@@ -1,4 +1,4 @@
-abstract class BaseWorkItemFetcher implements WorkItemFetcherInterface {
+abstract class BaseWorkItemFetcher implements IWorkItemFetcher {
 
     constructor(protected readonly endpoint: string) { }
 

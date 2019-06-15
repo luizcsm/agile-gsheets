@@ -1,4 +1,4 @@
-class UtilSheet extends BaseSheet {
+class UtilSheet extends Sheet {
 
     constructor() {
         super(UTIL_SHEET);        

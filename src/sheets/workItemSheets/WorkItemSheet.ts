@@ -1,13 +1,16 @@
-abstract class WorkItemSheet extends BaseSheet {
+abstract class WorkItemSheet extends Sheet implements IWorkItemSheet {
 
-    readonly workItems: WorkItem[];
+    private workItems: WorkItem[];
 
-    constructor(sheetName: string, workItems: WorkItem[]) {
+    constructor(sheetName: string) {
         super(sheetName);
-        this.workItems = workItems.filter(this.workItemFilter);
     }
     
     abstract workItemFilter(workItem: WorkItem): boolean;
+
+    setWorkItems(workItems: WorkItem[]) {
+        this.workItems = workItems.filter(this.workItemFilter);
+    }
 
     update(): void {
         let rangeValuePairList : RangeAndDataPair[] = this.getDataRangeList().getRanges().map((range) => new RangeAndDataPair(range));
