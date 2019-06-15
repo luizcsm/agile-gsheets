@@ -1,7 +1,7 @@
 class TaskProgressSheet extends WorkItemSheet {
 
-    constructor(workItems : WorkItem[]) {
-        super(TASK_PROGRESS_SHEET, workItems);        
+    constructor() {
+        super(TASK_PROGRESS_SHEET);        
     }
 
     workItemFilter(workItem: WorkItem): boolean {

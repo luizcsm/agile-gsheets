@@ -23,7 +23,7 @@ abstract class WorkItemSheet extends Sheet implements IWorkItemSheet {
     }
 
     private removeDeleted_(rangeList: RangeAndDataPair[]): void {
-        const newWorkItemsIds = this.getNewWorkItemIds_();
+        const newWorkItemsIds: string[] = this.getNewWorkItemIds_();
         const idRange: RangeAndDataPair = rangeList[this.getWorkItemIdsRangeIndex()];
         for (let idIndex = 0; idIndex < idRange.values[0].length; idIndex++) {
             const element: string = idRange[0][idIndex];
@@ -38,16 +38,47 @@ abstract class WorkItemSheet extends Sheet implements IWorkItemSheet {
     }
 
     private addNewIds_(rangeList: RangeAndDataPair[]): void {
-        throw new Error("NotImplemented");
+        const newWorkItemsIds: string[] = this.getNewWorkItemIds_();
+        const idRange: RangeAndDataPair = rangeList[this.getWorkItemIdsRangeIndex()];
+
+        let emptyRow: number = 0;
+
+        for (let idIndex: number = 0; idIndex < newWorkItemsIds.length; idIndex++) {
+            let workItemId: string = newWorkItemsIds[idIndex];
+            let exists: boolean = false;
+            // Check if exists
+            for (var rowIndex: number = 0; rowIndex < idRange.values.length; rowIndex++) {
+                var rowTaskId: string = idRange.values[rowIndex][0] as string;
+                if (rowTaskId === workItemId) {
+                    exists = true;
+                    break;
+                }
+            }
+            // Insert if does not exist
+            if (!exists) {
+                while(idRange.values[emptyRow][0]) {
+                    ++emptyRow;
+                }
+                idRange.values[emptyRow][0] = workItemId;
+            }
+        }
     }
 
     private update_(rangeList: RangeAndDataPair[]): void {
-        throw new Error("NotImplemented");
+        const idRange: RangeAndDataPair = rangeList[this.getWorkItemIdsRangeIndex()];
+
+        for (let rowIndex: number = 0; rowIndex < idRange.values.length; rowIndex++) {
+            let workItemId: string = idRange.values[rowIndex][0] as string;
+            if (!workItemId) {
+                continue;
+            }
+            this.updateDataRangesLine(rangeList, rowIndex, this.workItems.find((item) => item.id === workItemId));            
+        }
     }
 
     protected abstract getDataRangeList() : GoogleAppsScript.Spreadsheet.RangeList;
 
-    protected abstract updateDataRangesLine(rangeList: RangeAndDataPair[], lineIndex: number, workItem: WorkItem): void;
+    protected abstract updateDataRangesLine(rangeList: RangeAndDataPair[], rowIndex: number, workItem: WorkItem): void;
 
     private getNewWorkItemIds_(): string[] {
         return this.workItems.map((item) => item.id);
