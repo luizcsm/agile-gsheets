@@ -7,4 +7,8 @@ abstract class Sheet implements ISheet {
     }
 
     abstract update() : void;
+
+    onEdit(event: any): void {
+        // Must be overriden if onEdit behavior is desired.
+    }
 }
