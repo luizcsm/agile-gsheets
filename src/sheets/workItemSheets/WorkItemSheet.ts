@@ -6,14 +6,14 @@ abstract class WorkItemSheet extends Sheet implements IWorkItemSheet {
         super(sheetName);
     }
     
-    abstract workItemFilter(workItem: WorkItem): boolean;
+    protected abstract workItemFilter(workItem: WorkItem): boolean;
 
     setWorkItems(workItems: WorkItem[]) {
         this.workItems = workItems.filter(this.workItemFilter);
     }
 
     update(): void {
-        let rangeValuePairList : RangeAndDataPair[] = this.getDataRangeList().getRanges().map((range) => new RangeAndDataPair(range));
+        let rangeValuePairList : RangeAndDataPair[] = this.getDataRangeList().map((range) => new RangeAndDataPair(range));
         this.removeDeleted_(rangeValuePairList);
         this.addNewIds_(rangeValuePairList);
         this.update_(rangeValuePairList);
@@ -76,7 +76,7 @@ abstract class WorkItemSheet extends Sheet implements IWorkItemSheet {
         }
     }
 
-    protected abstract getDataRangeList() : GoogleAppsScript.Spreadsheet.RangeList;
+    protected abstract getDataRangeList() : GoogleAppsScript.Spreadsheet.Range[];
 
     protected abstract updateDataRangesLine(rangeList: RangeAndDataPair[], rowIndex: number, workItem: WorkItem): void;
 
